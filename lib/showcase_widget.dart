@@ -73,6 +73,7 @@ class ShowCaseWidgetState extends State<ShowCaseWidget> {
   bool autoPlay;
   Duration autoPlayDelay;
   bool autoPlayLockEnable;
+  bool disableBarrierInteraction;
 
   @override
   void initState() {
@@ -81,6 +82,7 @@ class ShowCaseWidgetState extends State<ShowCaseWidget> {
     this.autoPlayDelay = widget.autoPlayDelay;
     this.autoPlay = widget.autoPlay;
     this.autoPlayLockEnable = widget.autoPlayLockEnable;
+    this.disableBarrierInteraction = widget.disableBarrierInteraction;
   }
 
   void startShowCase(List<GlobalKey> widgetIds) {

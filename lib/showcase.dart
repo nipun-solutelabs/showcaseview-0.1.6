@@ -198,9 +198,6 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
   }
 
   _nextIfAny() {
-    if (ShowCaseWidget.of(context).disableBarrierInteraction) {
-      return;
-    }
     if (timer != null && timer.isActive) {
       if (ShowCaseWidget.of(context).autoPlayLockEnable) {
         return;
@@ -230,6 +227,9 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
     }
   }
 
+  bool disableOverlayInteraction() =>
+      ShowCaseWidget.of(context).disableBarrierInteraction;
+
   buildOverlayOnTarget(
     Offset offset,
     Size size,
@@ -243,7 +243,11 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
         child: Stack(
           children: [
             GestureDetector(
-              onTap: _nextIfAny,
+              onTap: () {
+                if (!disableOverlayInteraction()) {
+                  _nextIfAny();
+                }
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,

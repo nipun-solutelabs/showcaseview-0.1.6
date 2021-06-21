@@ -34,6 +34,7 @@ class ShowCaseWidget extends StatefulWidget {
   final bool autoPlay;
   final Duration autoPlayDelay;
   final bool autoPlayLockEnable;
+  final bool disableBarrierInteraction;
 
   const ShowCaseWidget({
     @required this.builder,
@@ -43,6 +44,7 @@ class ShowCaseWidget extends StatefulWidget {
     this.autoPlay = false,
     this.autoPlayDelay = const Duration(milliseconds: 2000),
     this.autoPlayLockEnable = false,
+    this.disableBarrierInteraction = false,
   });
 
   static activeTargetWidget(BuildContext context) {
